@@ -1,33 +1,14 @@
 import numpy as np
 import pandas as pd
-from PIL import Image
-
-from model.functions import apply_cleanse, apply_tokenize, apply_delete_stopwords, apply_lemmatize
-from sklearn.feature_extraction.text import TfidfVectorizer
-
-import streamlit as st
-import joblib
 import os
+import sys
 
-def load_model():
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    print(script_dir)
-    path = os.path.abspath(os.path.join(script_dir, '..',  'model', 'nlp_nn.joblib')) 
-    # this makes sure that we take the parent folder, and always takes the model folder from the parent folder
+dir = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(dir)
+sys.path.append(parent)
 
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"Model not found at: {path}")
-    print(path)
-    return joblib.load(path)
-
-def load_image(file):
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.abspath(os.path.join(script_dir, '..',  'assets', file))
-    if os.path.exists(path):
-        return Image.open(path)
-    else:
-        print('error')
-        return None
+from st_functions import predict, load_image
+import streamlit as st
 
 st.set_page_config(layout='wide')
 
@@ -71,14 +52,14 @@ st.divider()
 st.subheader('Try it yourself!')
 tweet = st.text_area('Insert tweet here', 'tweet....', height=150)
 st.write(f'Your text: {tweet}')
-'''
-model = load_model()
+
 if st.button('Predict', width='stretch'):
     word = pd.DataFrame({
         'Tweet': [f'{tweet}']
     })
-    st.write(f'**Prediction: {model.predict(word['Tweet'])}**')
-'''
+    result = predict(word['Tweet'])
+    st.write(f'**Prediction: {result}**')
+
 
 st.divider()
 st.title('Model NLP (Natural Language Processing)')

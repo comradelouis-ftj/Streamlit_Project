@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
-import joblib
-import os
+
+from st_functions import predict, load_image, cleanse, delete_stopwords, get_wordnet_pos, lemmatize
 
 st.set_page_config(layout='wide')
 
