@@ -2,9 +2,12 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from st_functions import predict, load_image, cleanse, delete_stopwords, get_wordnet_pos, lemmatize
+# from st_functions import predict, predict_df, load_image, cleanse, delete_stopwords, get_wordnet_pos, lemmatize
 
-st.set_page_config(layout='wide')
+st.set_page_config(
+    page_title='NLP Project - Home Page', 
+    layout='wide'
+)
 
 st.markdown(
 """

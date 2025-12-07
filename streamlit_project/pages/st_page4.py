@@ -7,10 +7,13 @@ dir = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(dir)
 sys.path.append(parent)
 
-from st_functions import predict, load_image
+from st_functions import predict, load_image, predict_df, plot_pie
 import streamlit as st
 
-st.set_page_config(layout='wide')
+st.set_page_config(
+    page_title='NLP Project - Model Preview', 
+    layout='wide'
+)
 
 # CSS Markdown
 st.markdown(
@@ -50,15 +53,34 @@ st.title('The NLP Model')
 st.divider()
 
 st.subheader('Try it yourself!')
-tweet = st.text_area('Insert tweet here', 'tweet....', height=150)
-st.write(f'Your text: {tweet}')
+st.divider()
+col_write, col_up = st.columns(2)
 
-if st.button('Predict', width='stretch'):
-    word = pd.DataFrame({
-        'Tweet': [f'{tweet}']
-    })
-    result = predict(word['Tweet'])
-    st.write(f'**Prediction: {result}**')
+with col_write:
+    with st.container(height=400):
+        st.write('**Insert tweet here:**')
+        tweet = st.text_area('make sure to use english, example tweet: **I like this game!**', 'tweet....', height=150)
+        st.write(f'Your text: {tweet}')
+
+        if st.button('Predict', width='stretch'):
+            word = pd.DataFrame({
+                'Tweet': [f'{tweet}']
+            })
+            result = predict(word['Tweet'])
+            st.write(f'**Prediction: {result}**')
+
+with col_up:
+    with st.container(height=400):
+        st.write('**Try it with files!**')
+        file_csv = st.file_uploader("Insert .csv file here, make sure your file has a 'Tweet' column", type=['csv'])
+        if file_csv is not None:
+            st.write("Successful upload!")
+            file = pd.read_csv(file_csv)
+            file['class'] = predict_df(file['Tweet'])
+
+            st.divider()
+            plot_pie(file['class'])
+            st.dataframe(file.head(5))
 
 
 st.divider()
@@ -72,20 +94,20 @@ with col2:
     image = load_image('struktur_nn.png')
     st.image(image, caption='Struktur Neural Network', width=400)
 
-col1, col2 = st.columns(2)
-with col1:
+col11, col12 = st.columns(2)
+with col11:
     image_relu = load_image('relu.png')
     st.image(image_relu, caption='Fungsi ReLU (Rectified Linear Unit)')
-with col2:
+with col12:
     image_softmax = load_image('softmax.png')
     st.image(image_softmax, caption='Fungsi Softmax')
 
-col1, col2 = st.columns(2)
-with col1:
+col21, col22 = st.columns(2)
+with col21:
     st.write('''Fungsi ReLU digunakan untuk mematikan atau menghapus pengaruh dari nilai yang bernilai di bawah 0. Disini, nilai bernilai di bawah atau sama dengan 0
              merepresentasikan kata yang tidak memiliki pengaruh atau bobot signifikan berdasarkan hasil vectorization menggunaan TF-IDF. Dalam kasus ini, fungsi
              ReLU digunakan pada hidden layer pertama untuk mematikan kata yang tidak memiliki signifikansi''')
-with col2:
+with col22:
     st.write('''Fungsi Softmax merupakan fungsi yang seringkali digunakan untuk klasifikasi multi-kelas, karena luaran (output) yang berupa probabilitas suatu nilai
              merupakan bagian dari kelas tertentu. Dalam kasus proyek ini, fungsi Softmax digunakan pada hidden layer kedua dan pada output layer''')
 

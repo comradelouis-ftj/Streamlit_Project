@@ -1,8 +1,13 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib import cm
+
 import os
 import joblib
 import streamlit as st
 from PIL import Image
-import numpy as np
+
 import re
 import emoji
 import nltk
@@ -96,6 +101,39 @@ def predict(data):
     prediction = model.predict(new_data)
     print(prediction)
     return categorize(prediction)
+
+def agg_pos_neg_neu(item):
+    if item == 0:
+        return "Negative"
+    elif item == 1:
+        return "Neutral"
+    elif item == 2:
+        return "Positive"
+
+def predict_df(data):
+    model = load_model()
+    new_data = preprocess(data)
+    prediction = model.predict(new_data)
+    return list(map(agg_pos_neg_neu,np.argmax(prediction, axis=1)))
+
+def plot_pie(data):
+    data_n = data.value_counts()
+    colormap = cm.Wistia
+    slice_colors = colormap(np.linspace(0, 1, len(data_n)))
+
+    fig, ax = plt.subplots(figsize=(5, 4))
+    ax.pie(
+        data_n.values,
+        labels=data_n.index,
+        autopct='%1.1f%%',
+        textprops={'weight': 'bold'},
+        shadow=True,
+        startangle=90,
+        colors=slice_colors
+    )
+    ax.add_artist(plt.Circle((0,0),0.30,fc='white'))
+    plt.title('Distribusi Sentimen', fontsize=14, fontweight='bold')
+    st.pyplot(fig)
 
 @st.fragment
 def load_image(file):

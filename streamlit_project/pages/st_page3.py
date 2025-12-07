@@ -1,10 +1,11 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
-import joblib
-import os
 
-st.set_page_config(layout='wide')
+st.set_page_config(
+    page_title='NLP Project - Preprocessing', 
+    layout='wide'
+)
 
 st.markdown(
 """
