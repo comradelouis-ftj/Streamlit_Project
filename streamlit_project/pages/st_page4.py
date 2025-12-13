@@ -59,7 +59,7 @@ col_write, col_up = st.columns(2)
 with col_write:
     with st.container(height=400):
         st.write('**Insert tweet here:**')
-        tweet = st.text_area('make sure to use english, example tweet: **I like this game!**', 'tweet....', height=150)
+        tweet = st.text_area('make sure to use english, example tweet: **I love this game!**', 'tweet....', height=150)
         st.write(f'Your text: {tweet}')
 
         if st.button('Predict', width='stretch'):
@@ -117,4 +117,4 @@ col1, col2, col3 = st.columns([1.5, 4, 1.5])
 with col2:
     image_ev = load_image('evaluasi.png')
     st.image(image_ev, caption='Hasil Evaluasi Model', width=400)
-st.write('Pada seluruh kategori, nilai precision, recall, f1-score, dan akurasi memiliki nilai >=70%. Ini berarti model dapat mengidentifikasi kalimat dengan sentien positif, negatif, dan netral secara andal dengan akurasi di atas 90%')
+st.write('Pada seluruh kategori, nilai precision, recall, f1-score, dan akurasi memiliki nilai >=70%. Ini berarti model dapat mengidentifikasi kalimat dengan sentien positif, negatif, dan netral secara andal dengan akurasi di atas 80%')
