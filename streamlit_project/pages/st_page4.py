@@ -106,10 +106,10 @@ col21, col22 = st.columns(2)
 with col21:
     st.write('''Fungsi ReLU digunakan untuk mematikan atau menghapus pengaruh dari nilai yang bernilai di bawah 0. Disini, nilai bernilai di bawah atau sama dengan 0
              merepresentasikan kata yang tidak memiliki pengaruh atau bobot signifikan berdasarkan hasil vectorization menggunaan TF-IDF. Dalam kasus ini, fungsi
-             ReLU digunakan pada hidden layer pertama untuk mematikan kata yang tidak memiliki signifikansi''')
+             ReLU digunakan pada hidden layer untuk mematikan kata yang tidak memiliki signifikansi''')
 with col22:
     st.write('''Fungsi Softmax merupakan fungsi yang seringkali digunakan untuk klasifikasi multi-kelas, karena luaran (output) yang berupa probabilitas suatu nilai
-             merupakan bagian dari kelas tertentu. Dalam kasus proyek ini, fungsi Softmax digunakan pada hidden layer kedua dan pada output layer''')
+             merupakan bagian dari kelas tertentu. Dalam kasus proyek ini, fungsi Softmax digunakan pada pada output layer''')
 
 st.divider()
 st.write('Dengan struktur deikian, dan tahap preprocessing yang telah dijelaskan pada halaman sebelumnya, model yang dibentuk memiliki hasil evaluasi berikut:')
@@ -117,4 +117,4 @@ col1, col2, col3 = st.columns([1.5, 4, 1.5])
 with col2:
     image_ev = load_image('evaluasi.png')
     st.image(image_ev, caption='Hasil Evaluasi Model', width=400)
-st.write('Pada seluruh kategori, nilai precision, recall, f1-score, dan akurasi memiliki nilai >=90%. Ini berarti model dapat mengidentifikasi kalimat dengan sentien positif, negatif, dan netral secara andal dengan akurasi di atas 90%')
+st.write('Pada seluruh kategori, nilai precision, recall, f1-score, dan akurasi memiliki nilai >=70%. Ini berarti model dapat mengidentifikasi kalimat dengan sentien positif, negatif, dan netral secara andal dengan akurasi di atas 90%')
