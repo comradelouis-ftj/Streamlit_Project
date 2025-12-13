@@ -112,7 +112,7 @@ with col22:
              merupakan bagian dari kelas tertentu. Dalam kasus proyek ini, fungsi Softmax digunakan pada pada output layer''')
 
 st.divider()
-st.write('Dengan struktur deikian, dan tahap preprocessing yang telah dijelaskan pada halaman sebelumnya, model yang dibentuk memiliki hasil evaluasi berikut:')
+st.write('Dengan struktur demikian, dan tahap preprocessing yang telah dijelaskan pada halaman sebelumnya, model yang dibentuk memiliki hasil evaluasi berikut:')
 col1, col2, col3 = st.columns([1.5, 4, 1.5])
 with col2:
     image_ev = load_image('evaluasi.png')
