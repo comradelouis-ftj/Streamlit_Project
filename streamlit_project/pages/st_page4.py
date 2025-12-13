@@ -44,12 +44,12 @@ with st.sidebar:
     if st.button('**Tahap Preprocessing**', width="stretch"):
         st.switch_page('pages/st_page3.py')
 
-    if st.button('**Try the Model!**', width="stretch"):
+    if st.button('**Prediksi Sentimen**', width="stretch"):
         st.switch_page('pages/st_page4.py')
 
 # Main Page
 
-st.title('The NLP Model')
+st.title('Model NLP - Klasifikasi Sentimen Tweets')
 st.divider()
 
 st.subheader('Try it yourself!')

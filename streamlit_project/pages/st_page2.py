@@ -36,7 +36,7 @@ with st.sidebar:
     if st.button('**Tahap Preprocessing**', width="stretch"):
         st.switch_page('pages/st_page3.py')
 
-    if st.button('**Try the Model!**', width="stretch"):
+    if st.button('**Prediksi Sentimen**', width="stretch"):
         st.switch_page('pages/st_page4.py')
 
 
