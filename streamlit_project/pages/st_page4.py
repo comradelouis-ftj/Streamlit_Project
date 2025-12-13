@@ -11,7 +11,7 @@ from st_functions import predict, load_image, predict_df, plot_pie
 import streamlit as st
 
 st.set_page_config(
-    page_title='NLP Project - Model Preview', 
+    page_title='NLP Project - Model', 
     layout='wide'
 )
 
