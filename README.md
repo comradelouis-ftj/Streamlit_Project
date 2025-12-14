@@ -13,6 +13,8 @@ Untuk menjalankan proyek ini di PC lokal Anda, **pastikan untuk memperhatikan be
 3. **Jangan** ubah direktori atau struktur aplikasi untuk menjamin aplikasi berjalan dengan baik (bila Anda ingin menggunakan proyek ini sebagai *template*, silahkan ubah direktori sesuka Anda).
 4. Apabila Anda **menjalankan notebook NLP.ipnyb**, pastikan untuk **menjalankan repickle_custom_functions.py** sebelum menjalankan streamlit. Ini dilakukan agar fungsi yang dibutuhkan dapat berjalan di module main direktori Anda.
 
+**Note:** untuk mencoba fitur *upload file* pada halaman Prediksi Sentimen, bisa menggunakan *file* trial_2.csv pada folder data. 
+
 ---
 #**Authors**
 ---

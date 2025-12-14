@@ -109,7 +109,7 @@ with col21:
              ReLU digunakan pada hidden layer untuk mematikan kata yang tidak memiliki signifikansi''')
 with col22:
     st.write('''Fungsi Softmax merupakan fungsi yang seringkali digunakan untuk klasifikasi multi-kelas, karena luaran (output) yang berupa probabilitas suatu nilai
-             merupakan bagian dari kelas tertentu. Dalam kasus proyek ini, fungsi Softmax digunakan pada pada output layer''')
+             merupakan bagian dari kelas tertentu. Dalam kasus proyek ini, fungsi Softmax digunakan pada output layer''')
 
 st.divider()
 st.write('Dengan struktur demikian, dan tahap preprocessing yang telah dijelaskan pada halaman sebelumnya, model yang dibentuk memiliki hasil evaluasi berikut:')
@@ -117,4 +117,4 @@ col1, col2, col3 = st.columns([1.5, 4, 1.5])
 with col2:
     image_ev = load_image('evaluasi.png')
     st.image(image_ev, caption='Hasil Evaluasi Model', width=400)
-st.write('Pada seluruh kategori, nilai precision, recall, f1-score, dan akurasi memiliki nilai >=70%. Ini berarti model dapat mengidentifikasi kalimat dengan sentien positif, negatif, dan netral secara andal dengan akurasi di atas 80%')
+st.write('Pada seluruh kategori, nilai precision, recall, f1-score, dan akurasi memiliki nilai >=70%. Ini berarti model dapat mengidentifikasi kalimat dengan sentien positif, negatif, dan netral secara andal.')
